@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="pt-br"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado Gerado</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F3F4F6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 350px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .header {
+            background-color: #0d6efd;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .header i {
+            margin-right: 8px;
+        }
+
+        .content {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 10px;
+        }
+
+        .value-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 30px;
+            color: #0d6efd;
+            font-weight: bold;
+            background-color: #F3F4F6;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            padding: 10px;
+            max-width: 300px;
+            margin: 15px auto;
+        }
+
+        .loading-icon {
+            font-size: 20px;
+            color: #0d6efd;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .timer {
+            color: #EF4444;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #6B7280;
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #E9ECEF;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #0d6efd;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        .footer-seal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #34D399;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .footer-seal i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-check-circle"></i>
+            Verificado e Seguro
+        </div>
+        <div class="content">
+            <h2>Saldo disponível para saque:</h2>
+            <div class="value-container">
+                <span id="balanceValue" style="display: none;">R$ 3.458,10</span>
+                <div id="loadingIcon" class="loading-icon">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <i class="fas fa-shield-alt tooltip">
+                </i>
+            </div>
+
+            <div class="timer" id="timer">Disponível por: <span id="tempoRestante">19:00</span></div>
+            <div class="info">Saldo atualizado automaticamente. Informação segura e autenticada.</div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <div class="footer-seal">
+            <i class="fas fa-shield-alt"></i> Informação garantida com segurança
+        </div>
+    </div>
+
+    <script>
+        function startTimer(duration) {
+            let timer = duration, minutes, seconds;
+            const display = document.getElementById('tempoRestante');
+            const progressElement = document.getElementById('progress');
+            const totalDuration = duration;
+
+            const interval = setInterval(() => {
+                minutes = Math.floor(timer / 60);
+                seconds = timer % 60;
+                display.textContent = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+                const progressPercentage = ((totalDuration - timer) / totalDuration) * 100;
+                progressElement.style.width = `${progressPercentage}%`;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "Tempo esgotado para saque";
+                    progressElement.style.width = "100%";
+                }
+            }, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mostrar o saldo após 3 segundos e ocultar o ícone de carregamento
+            setTimeout(() => {
+                document.getElementById('loadingIcon').style.display = "none";
+                document.getElementById('balanceValue').style.display = "inline";
+            }, 3000);
+
+            startTimer(1140); // 19 minutos de contagem regressiva
+        });
+    </script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" data-cf-beacon="{" rayid":"8e1bff7baae366d2","version":"2024.10.5","r":1,"token":"1a435aee16174edcaef1913baeae9d1f","servertiming":{"name":{"cfextpri":true,"cfl4":true,"cfspeedbrain":true,"cfcachestatus":true}}}"="" crossorigin="anonymous"></script>
+
+
+
+</body></html>
