@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+    <script defer="" src="js/all.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            padding: 1px;
+            background-color: #FFFFFF;
+            color: #fff;
+        }
+
+        .result-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px 10px;
+            max-width: 600px;
+            flex: 1;
+            overflow-y: auto;
+            h2 {
+                color: #1D4F91;
+            }
+        }
+
+        .info {
+            margin-bottom: 20px;
+            display: flex;
+        }
+
+        .icon {
+            color: #3553FF;
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description {
+            margin-left: 10px;
+        }
+
+        footer {
+            background-color: #3553FF;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <img src="images/images-1.png" alt="Serasa" height="50">
+    </div>
+    <div class="result-container">
+        <h2>Dados cadastrais:</h2>
+        <div class="info">
+            <div class="icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="description">
+                <strong>Nome:</strong><br>
+                <span id="nome">WILLIAN DA SILVA GONCALVES JUNIOR</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="description">
+                <strong>Nascimento:</strong><br>
+                <span id="nascimento">26/11/2001</span>
+            </div>
+        </div>
+        <div class="info">
+            <div class="icon">
+                <i class="fas fa-id-card"></i>
+            </div>
+            <div class="description">
+                <strong>CPF:</strong><br>
+                <span id="cpf">19736700704</span>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Nossa Política de Transparência trata das diretrizes adotadas em relação �� recepção, armazenamento e utilização das informações, bem como dos direitos e obrigações das partes com relação a esses dados.
+    </footer>
+
+    <script>
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var cpf = urlParams.get('cpf');
+        var nome = urlParams.get('nome');
+        var nascimento = urlParams.get('nascimento');
+
+        document.getElementById("cpf").innerText = cpf;
+        document.getElementById("nome").innerText = nome;
+        document.getElementById("nascimento").innerText = nascimento;
+    </script>
+
+
+
+
+</body></html>
