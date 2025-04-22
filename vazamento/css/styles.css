@@ -1,0 +1,139 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fffff0; /* Light yellowish background (bank receipt style) */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 100%; /* Use full width for small screens */
+    margin: 5px auto; /* Reduced margin for very small screens */
+    padding: 5px; /* Reduced padding for very small screens */
+    background-color: #fff; /* White background for content */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 5px; /* Reduced margin for very small screens */
+}
+
+/* Logo Styling */
+.header .logo {
+    width: 70px; /* Even smaller logo for very small screens */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 5px; /* Reduced space below the logo */
+}
+
+.header h2 {
+    font-size: 0.9rem; /* Smaller font size for very small screens */
+    margin: 3px 0; /* Reduced margin for very small screens */
+    color: #7f8c8d;
+}
+
+/* Grid Layout for Info Section */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* Single column for very small screens */
+    gap: 3px; /* Reduced space between items */
+    margin-bottom: 5px; /* Reduced margin for very small screens */
+}
+
+.info-grid p {
+    margin: 0; /* Remove default margin */
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+}
+
+.info-grid strong {
+    color: #2c3e50;
+}
+
+/* Table Section */
+.table-section h3 {
+    font-size: 0.8rem; /* Smaller font size for very small screens */
+    margin-bottom: 3px; /* Reduced margin for very small screens */
+    color: #2c3e50;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 5px; /* Reduced margin for very small screens */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 4px; /* Smaller padding for very small screens */
+    text-align: left;
+    font-size: 0.6rem; /* Smaller font size for very small screens */
+}
+
+th {
+    background-color: #2c3e50;
+    color: #fff;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+tfoot {
+    font-weight: bold;
+    background-color: #ecf0f1;
+}
+
+tfoot td {
+    padding: 4px; /* Smaller padding for very small screens */
+    text-align: left;
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    color: #2c3e50;
+}
+
+tfoot td:last-child {
+    text-align: right;
+}
+
+/* Specific Adjustments for Screens Below 309px */
+@media (max-width: 309px) {
+    .container {
+        padding: 3px; /* Minimal padding for very small screens */
+    }
+
+    .header .logo {
+        width: 60px; /* Even smaller logo for very small screens */
+    }
+
+    .header h2 {
+        font-size: 0.8rem; /* Even smaller font size for very small screens */
+    }
+
+    .info-grid p {
+        font-size: 0.6rem; /* Even smaller font size for very small screens */
+    }
+
+    .table-section h3 {
+        font-size: 0.7rem; /* Even smaller font size for very small screens */
+    }
+
+    th, td {
+        padding: 3px; /* Even smaller padding for very small screens */
+        font-size: 0.5rem; /* Even smaller font size for very small screens */
+    }
+
+    tfoot td {
+        font-size: 0.6rem; /* Even smaller font size for very small screens */
+    }
+}

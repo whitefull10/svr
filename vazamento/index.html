@@ -1,0 +1,129 @@
+<html lang="pt-BR"><head></head><body>﻿
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indenização Governamental</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+
+    <div class="container">
+        <div class="header">
+            <!-- Replace "gov.br" text with the logo image -->
+            <img src="images/2560px-Gov.br_logo.svg.png" alt="gov.br Logo" class="logo">
+            <h2>Indenização Governamental</h2>
+        </div>
+        <div class="content">
+            <!-- Use a grid layout for the info section -->
+            <div class="info-grid">
+                <p><strong>Nome Completo:</strong> <span id="nome-completo"></span></p>
+                <p><strong>Indenização a receber:</strong> R$5.960,50</p>
+                <p><strong>Data da emissão:</strong> <span id="data-emissao">20/02/2025</span></p>
+                <p><strong>Número do Documento:</strong> 03.40.37412.95828945-0</p>
+                <p><strong>Vencimento:</strong> <span id="data-vazamento"></span></p>
+                <p><strong>Indenização a Receber:</strong> Vazamento de Dados Pessoais</p>
+                <p><strong>Imposto:</strong> R$ 61,90</p>
+            </div>
+            <div class="table-section">
+                <h3>Informação dos Dados Vazados</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Dado Pessoal</th>
+                            <th>Multa</th>
+                            <th>Juros</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1887</td>
+                            <td>NOME COMPLETO</td>
+                            <td>690,40</td>
+                            <td>202,25</td>
+                            <td>892,65</td>
+                        </tr>
+                        <tr>
+                            <td>1888</td>
+                            <td>CPF</td>
+                            <td>489,35</td>
+                            <td>515,90</td>
+                            <td>1005,25</td>
+                        </tr>
+                        <tr>
+                            <td>1889</td>
+                            <td>RG</td>
+                            <td>735,10</td>
+                            <td>152,40</td>
+                            <td>887,50</td>
+                        </tr>
+                        <tr>
+                            <td>1890</td>
+                            <td>RENDA MENSAL</td>
+                            <td>450,95</td>
+                            <td>289,20</td>
+                            <td>740,15</td>
+                        </tr>
+                        <tr>
+                            <td>1891</td>
+                            <td>DADOS BANCARIOS</td>
+                            <td>1.290,40</td>
+                            <td>902,25</td>
+                            <td>2192,65</td>
+                        </tr>
+                        <tr>
+                            <td>1892</td>
+                            <td>BANCARIOS</td>
+                            <td>135,45</td>
+                            <td>106,85</td>
+                            <td>242,30</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"><strong>TOTAIS</strong></td>
+                            <td><strong>R$5.960,50</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Function to format date in Brazilian format (dd/mm/yyyy)
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        // Update dynamic fields
+        document.addEventListener('DOMContentLoaded', function () {
+            // Fetch "nome" from URL
+            const nome = getParameterByName('nome');
+            if (nome) {
+                document.getElementById('nome-completo').textContent = nome;
+            }
+
+            // Set today's date for "Data da emissão" and "Vazamento"
+            const today = new Date();
+            const formattedDate = formatDate(today);
+            document.getElementById('data-emissao').textContent = formattedDate;
+            document.getElementById('data-vazamento').textContent = formattedDate;
+        });
+    </script>
+
+</body></html>
